@@ -6,8 +6,10 @@
 #include <ESP8266mDNS.h>
 #include <AccelStepper.h>
 
-// Fan
-#define fanPin 14
+// Heating mat (relay)
+#define heatPin 13
+
+
 
 // Stepper
 #define HALFSTEP 8  
@@ -36,6 +38,10 @@ const long interval = 2000;              // interval at which to read sensor
 // Interval for turning eggs
 unsigned long turnPreviousMillis = 0;        // will store last temp was read
 const long turnInterval = 10800000;             // 3 hours
+
+// Interval for toggling heater
+unsigned long heatPreviousMillis = 0;        
+const long heatInterval = 10000;             
 
 // Webserver
 const char* ssid = "Miso";
@@ -78,6 +84,9 @@ void setup(void){
   WiFi.begin(ssid, password);
   Serial.println("");
 
+  // Heating mat
+  pinMode(heatPin, OUTPUT);
+
   // Stepper
   stepper.setMaxSpeed(1000);
   stepper.setSpeed(100); 
@@ -110,7 +119,7 @@ void setup(void){
 
   if (temp < 0)
     cssClass = "cold";
-  else if (temp > 20)
+  else if (temp > 37)
     cssClass = "hot";
 
   // Time
@@ -170,7 +179,29 @@ void rotateEggs(){
   stepper.run();
 }
 
+void toggleHeater(){
+
+  unsigned long currentMillis = millis();
+
+  if(currentMillis - heatPreviousMillis >= heatInterval) {
+
+    heatPreviousMillis = currentMillis;
+
+    getTemperature();
+
+    if((temp + 0.5) < 37){
+      digitalWrite(heatPin, HIGH);
+      Serial.println("Heater on!"); 
+    }
+    else if ((temp - 0.5) > 37)  {
+      digitalWrite(heatPin, LOW);
+      Serial.println("Heater off!");
+    }
+  }
+}
+
 void loop(void){
   server.handleClient();
   rotateEggs();
+  toggleHeater();
 }
