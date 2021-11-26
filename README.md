@@ -5,7 +5,6 @@ Fork https://github.com/adriantomic/nodemcu-incubator NodeMCU ESP8266 project fo
 * DHT22 Temperature/Humidity sensor
 * NodeMCU
 * Servo motor + controller
-* Computer fan
 * Relay-module
 
 ## Connection diagram
