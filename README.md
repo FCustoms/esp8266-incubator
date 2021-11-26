@@ -1,4 +1,4 @@
-# nodemcu-incubator
+# esp8266-incubator
 Fork https://github.com/adriantomic/nodemcu-incubator NodeMCU ESP8266 project for an internet-driven egg incubator. Added a second relay to control the humidifier. EN/RU lang.
 
 ## Electronics
