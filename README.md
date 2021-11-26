@@ -9,6 +9,7 @@ NodeMCU/Arduino project for an internet controlled egg incubator.
 * Computer fan
 * Relay-module
 
-## Other parts
+## Shematic
+![Image alt](https://github.com/FCustoms/nodemcu-incubator/blob/master/inkubator.png)
 
 
