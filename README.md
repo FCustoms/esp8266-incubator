@@ -8,7 +8,7 @@ Fork https://github.com/adriantomic/nodemcu-incubator NodeMCU ESP8266 project fo
 * Relay-module
 
 ## Connection diagram
-![Image alt](https://github.com/FCustoms/nodemcu-incubator/blob/master/inkubator.png)
+![Image alt](https://github.com/FCustoms/esp8266-incubator/blob/master/inkubator.png)
 ## Web page
 ![Image alt](https://github.com/FCustoms/esp8266-incubator/blob/master/web_eggbot_cold.jpg)
 ![Image alt](https://github.com/FCustoms/esp8266-incubator/blob/master/web_eggbot_hot.jpg)
